@@ -1,0 +1,164 @@
+---
+import Header from '../components/Header.astro';
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{title}</title>
+
+  <meta name="description" content="Litika AV - Cinema, ciência e vetorialética" />
+  <link rel="icon" href="/favicon.svg" />
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <Header />
+
+  <!-- CONTEÚDO -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- 🎧 PLAYER GLOBAL -->
+  <div id="player-global">
+    <iframe
+      id="yt-player"
+      src="https://www.youtube.com/embed/MIj9bgsJgZY?enablejsapi=1&controls=0&loop=1&playlist=MIj9bgsJgZY&mute=1"
+      frameborder="0"
+      allow="autoplay"
+    ></iframe>
+
+    <button id="play-btn">ativar som</button>
+  </div>
+
+  <!-- YOUTUBE API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- CONTROLE DO PLAYER -->
+  <script>
+    let player;
+    let isPlaying = false;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('yt-player', {
+        events: {
+          onReady: (event) => {
+            event.target.mute(); // inicia mutado (obrigatório)
+            event.target.playVideo();
+          }
+        }
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById('play-btn');
+
+      btn.addEventListener('click', () => {
+        if (!isPlaying && player) {
+          player.unMute();
+          player.setVolume(50);
+          player.playVideo();
+
+          btn.innerText = "som ativo";
+          isPlaying = true;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* MAIN */
+main {
+  margin-top: 70px;
+}
+
+/* CAMADA SUAVE */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.02), transparent 60%);
+}
+
+/* PLAYER GLOBAL */
+#player-global {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+#player-global:hover {
+  opacity: 1;
+}
+
+/* ESCONDE VÍDEO */
+#yt-player {
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* BOTÃO ROOTS */
+#play-btn {
+  background: none;
+  border: 1px solid #333;
+  color: #777;
+
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+
+  padding: 6px 12px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+#play-btn:hover {
+  color: white;
+  border-color: #aaa;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  main {
+    margin-top: 65px;
+  }
+}
+
+</style>

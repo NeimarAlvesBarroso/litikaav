@@ -1,0 +1,131 @@
+---
+const { titulo, descricao } = Astro.props;
+---
+
+<div class="bloco">
+
+  <header class="bloco-header">
+    <h2>{titulo}</h2>
+    {descricao && <p class="descricao">{descricao}</p>}
+  </header>
+
+  <div class="conteudo">
+    <slot />
+  </div>
+
+</div>
+
+<style>
+
+/* BLOCO BASE */
+.bloco {
+  position: relative;
+
+  border: 1px solid #1a1a1a;
+  padding: 2rem;
+  margin: 2rem auto;
+
+  max-width: 900px;
+
+  background: linear-gradient(145deg, #0a0a0a, #050505);
+
+  transition: all 0.4s ease;
+
+  overflow: hidden;
+}
+
+/* CAMPO RESSONANTE (HALO) */
+.bloco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.06),
+    transparent 70%
+  );
+
+  opacity: 0;
+  transition: 0.4s;
+}
+
+/* HOVER */
+.bloco:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #666;
+}
+
+.bloco:hover::before {
+  opacity: 1;
+}
+
+/* HEADER */
+.bloco-header {
+  margin-bottom: 1.5rem;
+}
+
+/* TÍTULO */
+.bloco h2 {
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+/* DESCRIÇÃO */
+.descricao {
+  color: #888;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* LINKS */
+.conteudo a {
+  color: #ddd;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  transition: 0.3s;
+}
+
+.conteudo a:hover {
+  color: white;
+  border-color: white;
+}
+
+/* SEPARAÇÃO INTERNA */
+.conteudo > * + * {
+  margin-top: 1rem;
+}
+
+/* VARIANTE ROOTS (leve vibração orgânica) */
+.bloco:nth-child(odd) {
+  transform: rotate(-0.2deg);
+}
+
+.bloco:nth-child(even) {
+  transform: rotate(0.2deg);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .bloco {
+    margin: 1.5rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .bloco h2 {
+    font-size: 1.1rem;
+  }
+
+}
+
+</style>

@@ -1,0 +1,205 @@
+<section class="hero">
+
+  <!-- FUNDO -->
+  <div class="bg">
+
+    <!-- VÍDEO -->
+    <iframe
+      class="video"
+      src="https://www.youtube.com/embed/VCJXhXuQVUs?autoplay=1&mute=1&controls=0&loop=1&playlist=VCJXhXuQVUs&modestbranding=1&rel=0&playsinline=1"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+    ></iframe>
+
+    <!-- FALLBACK -->
+    <img src="/imagens/capa.jpg" alt="Litika AV" class="fallback" />
+
+  </div>
+
+  <!-- OVERLAY -->
+  <div class="overlay"></div>
+
+  <!-- CONTEÚDO -->
+  <div class="conteudo">
+
+    <h1>LÍTIKA AV</h1>
+
+    <div class="linha"></div>
+
+    <nav class="areas">
+      <a href="/arqueologia">ARQUEOLOGIA</a>
+      <span>—</span>
+      <a href="/cinema">CINEMA</a>
+      <span>—</span>
+      <a href="/pesquisa-vetorialetica">CIÊNCIA VETORIALÉTICA</a>
+    </nav>
+
+  </div>
+
+</section>
+
+<style>
+
+/* HERO BASE */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* FUNDO */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+/* VÍDEO FULL */
+.video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 177.77vh; /* 16:9 ratio fix */
+  height: 100vh;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+/* AJUSTE PARA TELAS LARGAS */
+@media (min-aspect-ratio: 16/9) {
+  .video {
+    width: 100vw;
+    height: 56.25vw;
+  }
+}
+
+/* FALLBACK */
+.fallback {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: -1;
+}
+
+/* OVERLAY (contraste com header) */
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.85)
+  );
+
+  z-index: -1;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  z-index: 2;
+  text-align: center;
+
+  padding: 0 1rem;
+  max-width: 800px;
+}
+
+/* TÍTULO */
+.conteudo h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 8px;
+  margin: 0;
+}
+
+/* LINHA */
+.linha {
+  width: 120px;
+  height: 1px;
+  margin: 1.5rem auto;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+}
+
+/* LINKS */
+.areas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0.8rem;
+
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+}
+
+/* LINKS ESTILO CINEMA */
+.areas a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+
+  position: relative;
+  transition: 0.3s;
+}
+
+.areas a:hover {
+  color: white;
+}
+
+/* UNDERLINE */
+.areas a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0%;
+  height: 1px;
+
+  background: white;
+  transition: 0.3s;
+}
+
+.areas a:hover::after {
+  width: 100%;
+}
+
+/* SEPARADOR */
+.areas span {
+  opacity: 0.3;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .areas {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .areas span {
+    display: none;
+  }
+
+}
+
+</style>

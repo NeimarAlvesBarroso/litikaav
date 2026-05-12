@@ -1,0 +1,348 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Projetos - Litika AV">
+
+<main class="campo">
+
+  <!-- 🎬 PLAYER CINEMA (DISCRETO / NÃO COLIDE COM GRID) -->
+  <div class="player-cinema">
+    <iframe
+      src="https://www.youtube.com/embed/XYsjdyzSYK8?autoplay=1&mute=1&controls=1&loop=1&playlist=XYsjdyzSYK8"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- TEXTO SUPERIOR -->
+  <div class="header">
+    <h1>CAMPO DE ATIVOS</h1>
+    <p>
+      Estrutura vetorial de projetos interdependentes.
+    </p>
+  </div>
+
+  <!-- GRID CENTRAL -->
+  <div class="grid">
+
+    <!-- CENTRO -->
+    <a href="/pesquisa-vetorialetica" class="node core">
+      <span>VETORIALÉTICA</span>
+    </a>
+
+    <!-- PRIMEIRA CAMADA -->
+    <a href="/mic" class="node">MIC</a>
+    <a href="/editoria" class="node">EDITORIA</a>
+    <a href="/missa" class="node">MISSA</a>
+
+    <!-- SEGUNDA -->
+    <!-- REDE -->
+    <a href="/mis-sertao-veredas" class="node">SERTÃO</a>
+    <a href="/mis-costa-descobrimento" class="node">COSTA</a>
+
+    <!-- EXPANSÃO -->
+    <a href="/museu-boemia-bh" class="node">BOEMIA</a>
+    <a href="/museu-alegria" class="node">ALEGRIA</a>
+
+  </div>
+
+    <!-- RODAPÉ RESSONANTE -->
+  <footer class="rodape">
+
+    <a href="javascript:history.back()" class="voltar">
+      ← voltar
+    </a>
+
+    <div class="assinatura-final">
+
+      <span class="empresa">
+        LÍTIKA AV
+      </span>
+
+      <p>
+        engenharia cultural • audiovisual • vetorialética • arqueologia visual
+      </p>
+
+    </div>
+
+  </footer>
+
+</main>
+
+</main>
+
+</BaseLayout>
+
+<style>
+
+/* BASE */
+.campo {
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0a0a0a, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* 🎬 PLAYER FIXO (ESTILO CINEMA) */
+.player-cinema {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+
+  width: 260px;
+  height: 150px;
+
+  z-index: 50;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  opacity: 0.65;
+  transition: 0.4s;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.player-cinema:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* iframe */
+.player-cinema iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+.header h1 {
+  font-size: 2rem;
+  letter-spacing: 6px;
+}
+
+.header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, 110px);
+  grid-template-rows: repeat(5, 110px);
+
+  gap: 1.2rem;
+  justify-content: center;
+  align-content: center;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* NÓ */
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #222;
+  border-radius: 50%;
+
+  font-size: 0.65rem;
+  text-align: center;
+
+  color: #aaa;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+  position: relative;
+
+  width: 100px;
+  height: 100px;
+}
+
+/* CENTRO */
+.core {
+  grid-column: 3;
+  grid-row: 3;
+
+  width: 140px;
+  height: 140px;
+
+  border: 1px solid white;
+  color: white;
+  font-size: 0.8rem;
+}
+
+/* POSIÇÕES */
+
+/* camada 1 */
+.node:nth-child(2) { grid-column: 3; grid-row: 1; }
+.node:nth-child(3) { grid-column: 1; grid-row: 3; }
+.node:nth-child(4) { grid-column: 5; grid-row: 3; }
+
+/* camada 2 */
+.node:nth-child(5) { grid-column: 2; grid-row: 2; }
+.node:nth-child(6) { grid-column: 4; grid-row: 2; }
+
+/* rede */
+.node:nth-child(7) { grid-column: 2; grid-row: 4; }
+.node:nth-child(8) { grid-column: 4; grid-row: 4; }
+.node:nth-child(9) { grid-column: 3; grid-row: 5; }
+
+/* expansão */
+.node:nth-child(10) { grid-column: 1; grid-row: 5; }
+.node:nth-child(11) { grid-column: 5; grid-row: 5; }
+
+/* HOVER */
+.node:hover {
+  transform: scale(1.15);
+  border-color: white;
+  color: white;
+}
+
+/* HALO */
+.node::after {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.node:hover::after {
+  opacity: 1;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .player-cinema {
+    width: 200px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .grid {
+    transform: scale(0.8);
+  }
+
+  .player-cinema {
+    top: 80px;
+    right: 10px;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .grid {
+    transform: scale(0.65);
+  }
+
+  /* vira bloco normal no mobile */
+  .player-cinema {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 2rem;
+  }
+
+}
+
+
+/* RODAPÉ */
+
+.rodape{
+  width:100%;
+
+  margin-top:6rem;
+  padding-top:3rem;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:2rem;
+
+  border-top:
+    1px solid rgba(255,255,255,0.06);
+}
+
+/* BOTÃO VOLTAR */
+
+.voltar{
+  text-decoration:none;
+
+  color:#c9a96a;
+
+  border:
+    1px solid rgba(214,185,107,0.18);
+
+  padding:0.9rem 1.6rem;
+
+  border-radius:999px;
+
+  letter-spacing:2px;
+  font-size:0.75rem;
+
+  transition:0.35s;
+
+  background:
+    rgba(214,185,107,0.04);
+
+  backdrop-filter:blur(8px);
+}
+
+.voltar:hover{
+  background:#d6b96b;
+  color:black;
+
+  transform:translateY(-3px);
+}
+
+/* ASSINATURA */
+
+.assinatura-final{
+  text-align:center;
+}
+
+.empresa{
+  display:block;
+
+  color:#f5e6c8;
+
+  letter-spacing:4px;
+
+  font-size:0.75rem;
+
+  margin-bottom:0.8rem;
+}
+
+.assinatura-final p{
+  color:#7d7156;
+
+  font-size:0.72rem;
+
+  letter-spacing:1px;
+}
+</style>
