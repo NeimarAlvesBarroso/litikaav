@@ -57,7 +57,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <p>
         A trajetória inicia-se na Universidade Federal de Minas Gerais,
-        no contexto do projeto Santíssimo Agostim,
+        no contexto do projeto Santíssimo Augustim,
         expandindo-se posteriormente para documentários,
         mostras, festivais, curadorias e sistemas culturais experimentais.
       </p>
@@ -247,19 +247,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       ← voltar
     </a>
 
-    <div class="assinatura-final">
 
-      <span class="empresa">
-        LÍTIKA AV
-      </span>
+    <span class="empresa">
+      LÍTIKA AV
+    </span>
 
-      <p>
-        engenharia cultural • audiovisual • vetorialética • arqueologia visual
-      </p>
+    <p>
+      engenharia cultural • audiovisual • vetorialética • arqueologia visual
+    </p>
 
-    </div>
+  </div>
 
-  </footer>
+</footer>
 
 </main>
 
@@ -865,6 +864,122 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   font-size:0.72rem;
 
   letter-spacing:1px;
+}
+
+/* RODAPÉ */
+
+.rodape{
+  width:100%;
+
+  margin-top:7rem;
+  padding-top:3rem;
+  padding-bottom:2rem;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:2rem;
+
+  border-top:
+    1px solid rgba(255,255,255,0.06);
+
+  position:relative;
+}
+
+/* BOTÃO VOLTAR */
+
+.voltar-rodape{
+
+  text-decoration:none;
+
+  color:#d6b96b;
+
+  font-size:0.74rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  padding:1rem 1.7rem;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(214,185,107,0.08),
+      rgba(0,0,0,0.55)
+    );
+
+  border:
+    1px solid rgba(214,185,107,0.22);
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+    0 0 25px rgba(214,185,107,0.06);
+
+  transition:0.4s ease;
+}
+
+/* HOVER */
+
+.voltar-rodape:hover{
+
+  background:#d6b96b;
+
+  color:black;
+
+  transform:
+    translateY(-4px)
+    scale(1.03);
+
+  box-shadow:
+    0 0 35px rgba(214,185,107,0.22);
+}
+
+/* ASSINATURA */
+
+.assinatura-final{
+  text-align:center;
+}
+
+.empresa{
+  display:block;
+
+  color:#f5e6c8;
+
+  font-size:0.76rem;
+
+  letter-spacing:4px;
+
+  margin-bottom:0.8rem;
+}
+
+.assinatura-final p{
+
+  color:#7d7156;
+
+  font-size:0.72rem;
+
+  letter-spacing:1px;
+
+  line-height:1.7;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:600px){
+
+  .voltar-rodape{
+
+    width:100%;
+
+    max-width:260px;
+
+    text-align:center;
+  }
+
 }
 
 </style>

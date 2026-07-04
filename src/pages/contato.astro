@@ -6,6 +6,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <main class="campo">
 
+<main class="campo">
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="javascript:history.back()" class="voltar-flutuante">
+    ← voltar
+  </a>
+
   <!-- VIA LÁCTEA -->
   <div class="via-lactea"></div>
 
@@ -87,17 +94,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   </section>
 
-  <!-- TELEFONE -->
-  <section class="telefone">
-
-    <a href="tel:+5533999351436">
-
-      55 (33) 99935 1436
-
-    </a>
 
     <p>
-      Neimar Alves Barroso
+      TELEFONE 33 999351436
     </p>
 
   </section>
@@ -160,7 +159,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="assinatura-final">
 
       <span class="empresa">
-        LÍTIKA AV LTDA.
+        LÍTIKA AV
       </span>
 
       <p>
@@ -771,6 +770,88 @@ body{
 
   .hero h1{
     letter-spacing:4px;
+  }
+
+}
+
+/* BOTÃO VOLTAR FLUTUANTE */
+
+.voltar-flutuante{
+  position:fixed;
+
+  top:92px;
+  right:24px;
+
+  z-index:120;
+
+  text-decoration:none;
+
+  color:#d6b96b;
+
+  font-size:0.74rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  padding:0.85rem 1.3rem;
+
+  border-radius:999px;
+
+  background:
+    rgba(0,0,0,0.55);
+
+  border:
+    1px solid rgba(214,185,107,0.22);
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 0 25px rgba(214,185,107,0.08);
+
+  transition:0.35s ease;
+}
+
+/* HOVER */
+
+.voltar-flutuante:hover{
+
+  background:#d6b96b;
+  color:black;
+
+  transform:
+    translateY(-2px)
+    scale(1.03);
+
+  box-shadow:
+    0 0 35px rgba(214,185,107,0.25);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .voltar-flutuante{
+    top:200px;
+    right:14px;
+
+    font-size:0.68rem;
+
+    padding:0.7rem 1rem;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .voltar-flutuante{
+
+    position:relative;
+
+    top:0;
+    right:0;
+
+    margin-bottom:2rem;
+
+    align-self:center;
   }
 
 }

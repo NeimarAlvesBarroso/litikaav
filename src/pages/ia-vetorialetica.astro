@@ -6,10 +6,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <main class="iav">
 
-  <!-- VOLTAR -->
-  <a href="/" class="voltar">
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="javascript:history.back()" class="voltar-flutuante">
     ← voltar
   </a>
+
 
   <!-- PLAYER RESSONANTE -->
   <div class="player-fixo">
@@ -138,26 +139,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </a>
 
-      <a href="/prototipos" class="bloco">
-        <h3>prototipagem</h3>
-        <p>
-          dispositivos cognitivos e arquiteturas híbridas
-        </p>
-      </a>
-
-      <a href="/estudos" class="bloco">
-        <h3>pesquisa avançada</h3>
-        <p>
-          física computacional e modelagem vetorial
-        </p>
-      </a>
-
-      <a href="/publicacoes" class="bloco">
-        <h3>publicações</h3>
-        <p>
-          papers, tratados e formalizações estruturais
-        </p>
-      </a>
 
       <a href="/contato" class="bloco">
         <h3>investimento</h3>
@@ -660,5 +641,87 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   font-size:0.72rem;
 
   letter-spacing:1px;
+}
+
+/* BOTÃO VOLTAR FLUTUANTE */
+
+.voltar-flutuante{
+  position:fixed;
+
+  top:92px;
+  right:24px;
+
+  z-index:120;
+
+  text-decoration:none;
+
+  color:#d6b96b;
+
+  font-size:0.74rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  padding:0.85rem 1.3rem;
+
+  border-radius:999px;
+
+  background:
+    rgba(0,0,0,0.55);
+
+  border:
+    1px solid rgba(214,185,107,0.22);
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 0 25px rgba(214,185,107,0.08);
+
+  transition:0.35s ease;
+}
+
+/* HOVER */
+
+.voltar-flutuante:hover{
+
+  background:#d6b96b;
+  color:black;
+
+  transform:
+    translateY(-2px)
+    scale(1.03);
+
+  box-shadow:
+    0 0 35px rgba(214,185,107,0.25);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .voltar-flutuante{
+    top:200px;
+    right:14px;
+
+    font-size:0.68rem;
+
+    padding:0.7rem 1rem;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .voltar-flutuante{
+
+    position:relative;
+
+    top:0;
+    right:0;
+
+    margin-bottom:2rem;
+
+    align-self:center;
+  }
+
 }
 </style>
